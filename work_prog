@@ -1,15 +1,21 @@
-mounth = int(input('Input number of mounth from 1 to 12 '))
-year = int(input('Input year: XXXX '))
-
 def calc_days(mounth, year):
-  if mounth in [1, 3, 5, 7, 8, 10, 12]:
+  if month in [1, 3, 5, 7, 8, 10, 12]:
     return 31
-  elif mounth == 2:
+  elif month in [4, 6, 9, 11]:
+    return 30
+  elif month == 2:
     if (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0):
       return 29
     else:
       return 28
   else:
-    return 30
+    return 0
 
-print(f'Days in this mounth: {calc_days(mounth, year)}')
+mounth = int(input('Input number of mounth from 1 to 12 '))
+year = int(input('Input year: XXXX '))
+
+days_in_month = calc_days(month, year)
+if days_in_month != 0:
+    print(f"Days in this month: {days_in_month}")
+else:
+    print("Invalid month input")
